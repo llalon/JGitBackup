@@ -1,0 +1,17 @@
+# Misc
+.git
+.cache
+*.md
+*.idea
+.mvn
+
+# Config
+*application.yml*
+*application.yaml*
+*application-dev.yml*
+*application-dev.yaml*
+*application-test.yml*
+*application-test.yaml*
+*application-*
+
+target
