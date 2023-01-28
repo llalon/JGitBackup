@@ -14,7 +14,6 @@ import org.springframework.context.annotation.Configuration;
 @Slf4j
 @ConfigurationProperties
 public class AppConfig {
-
     private String username;
     private String directory;
     private String token;
@@ -24,26 +23,6 @@ public class AppConfig {
     private String host;
     private GitProvider provider;
     private String schedule = "";
-
-    public void setUsername(String username) {
-        this.username = username.replaceAll("^\"|\"$", "");
-    }
-
-    public void setDirectory(String directory) {
-        this.directory = directory.replaceAll("^\"|\"$", "");
-    }
-
-    public void setToken(String token) {
-        this.token = token.replaceAll("^\"|\"$", "");
-    }
-
-    public void setHost(String host) {
-        this.host = host.replaceAll("^\"|\"$", "");
-    }
-
-    public void setSchedule(String schedule) {
-        this.schedule = schedule.replaceAll("^\"|\"$", "");
-    }
 
     @PostConstruct
     public void validate() throws IllegalArgumentException {

@@ -6,12 +6,7 @@
 .mvn
 
 # Config
-*application.yml*
-*application.yaml*
-*application-dev.yml*
-*application-dev.yaml*
-*application-test.yml*
-*application-test.yaml*
-*application-*
+*application-dev-*
+*application-test-*
 
 target

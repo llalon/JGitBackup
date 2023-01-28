@@ -10,9 +10,9 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 @Slf4j
-@AllArgsConstructor
 @Component
 @Profile("!test")
+@AllArgsConstructor
 public class RunOnceTask {
     private final GitBackupRunnable task;
     private final AppConfig config;
@@ -23,7 +23,9 @@ public class RunOnceTask {
      */
     @PostConstruct
     public void runOnce() {
-        if (config.getSchedule().isBlank()) {
+        if (config.getSchedule() == null
+                || config.getSchedule().isBlank()
+                || config.getSchedule().isEmpty()) {
             log.debug("Running single task");
 
             task.run();
