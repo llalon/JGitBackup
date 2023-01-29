@@ -23,9 +23,9 @@ public class RunOnceTask {
      */
     @PostConstruct
     public void runOnce() {
-        if (config.getSchedule() == null
-                || config.getSchedule().isBlank()
-                || config.getSchedule().isEmpty()) {
+        config.validate();
+
+        if (!config.isScheduleEnabled()) {
             log.debug("Running single task");
 
             task.run();

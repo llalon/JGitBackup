@@ -3,7 +3,6 @@ package de.llalon.gitbackup.config;
 import de.llalon.gitbackup.model.GitProvider;
 import java.util.ArrayList;
 import java.util.List;
-import javax.annotation.PostConstruct;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -15,16 +14,24 @@ import org.springframework.context.annotation.Configuration;
 @ConfigurationProperties
 public class AppConfig {
     private String username;
-    private String directory;
     private String token;
+    private String directory;
     private List<String> owners = new ArrayList<>();
     private List<String> repos = new ArrayList<>();
     private boolean whiteList = false;
     private String host;
     private GitProvider provider;
-    private String schedule = "";
+    private String schedule;
 
-    @PostConstruct
+    public boolean isScheduleEnabled() {
+        if (schedule == null) return false;
+        if (schedule.isEmpty()) return false;
+        if (schedule.isBlank()) return false;
+        if (schedule.equals("-")) return false;
+
+        return true;
+    }
+
     public void validate() throws IllegalArgumentException {
         log.debug("Validating user configuration: {}", this);
 

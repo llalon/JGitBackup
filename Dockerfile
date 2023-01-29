@@ -20,7 +20,7 @@ ENV JGITBACKUP_DIRECTORY '/git/'
 ENV JGITBACKUP_PROVIDER 'github'
 ENV JGITBACKUP_TOKEN ''
 ENV JGITBACKUP_USERNAME ''
-ENV JGITBACKUP_SCHEDULE ''
+ENV JGITBACKUP_SCHEDULE '-'
 
 COPY --from=build /build/target/JGitBackup.jar ./JGitBackup.jar
 CMD ["java", "-jar", "JGitBackup.jar"]
